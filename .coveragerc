@@ -1,0 +1,12 @@
+[run]
+omit =
+    *migrations*,
+    *tests*,
+    project*,
+    venv*,
+    manage.py,
+    utils/recipe/*,
+    other*,
+    utils/browser.py
+branch = True
+
