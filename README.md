@@ -11,7 +11,7 @@ Test Funcionais com Selenium
 - Testes Funcionais com Selenium
 
 ### Referências
-- [Django on Docker](https://www.udemy.com/course/curso-de-django-web-framework-com-python-html-e-css/learn/lecture/30370838#overview) tutorial series
+- [Django Web Framework](https://www.udemy.com/course/curso-de-django-web-framework-com-python-html-e-css/learn/lecture/30370838#overview) tutorial series
 
 
 
