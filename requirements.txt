@@ -1,0 +1,9 @@
+Django
+Pillow
+Faker
+python-decouple
+# pytest
+# pytest-django
+# parameterized Teste!
+# coverage
+selenium
