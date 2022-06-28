@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock title %}
+{% block search_or_no %}{% endblock search_or_no %}
+
+{% block content %}
+    <div class="main-content center container">
+        <h1>Dashboard | {{ user.first_name }}</h1>
+        {% include 'users/partials/login_message.html' %}
+        {% include 'partials/message.html' %}
+        <div class="authors-dashboard-container">
+            <h3>Suas Receitas</h3>
+            <ul>
+                {% for recipe in recipes  %}
+                    <li>
+                        <a 
+                            href="{% url 'users:recipe_id' recipe.id %}"
+                        >
+                            {{ recipe.title }}
+                        </a> - 
+                        <form 
+                            class="inline-form form-delete" 
+                            method='POST' 
+                            action="{% url 'users:recipe_delete' %}"
+                        >
+                            {% csrf_token %}
+                            <input 
+                                type="hidden" 
+                                name="recipe_id" 
+                                value="{{ recipe.id }}"
+                            >
+                            <button class="plaintext-button-del" type="submit">
+                                Apagar
+                            </button>
+                        </form>
+                    </li>
+                {% empty %}
+                    <li>
+                        <p>Todas as receitas já foram aprovadas</p>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>    
+{% endblock content %}

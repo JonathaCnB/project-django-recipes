@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard Recipe{% endblock title %}
+{% block search_or_no %}{% endblock search_or_no %}
+
+{% block content %}
+    <div class="main-content center container">
+        <h2>Dashboard | {{ user.first_name }}</h2>
+        {% include 'partials/message.html' %}
+        {% include 'users/partials/login_message.html' %}
+        <div class="left">
+            {% include 'partials/form.html' %}
+        </div>
+    </div>
+    
+{% endblock content %}

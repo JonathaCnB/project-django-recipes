@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Cadastro{% endblock title %}
+{% block search_or_no %}{% endblock search_or_no %}
+
+{% block content %}
+    <div class="main-content center container">
+        <h1>Cadastro {{ request.session.number }}</h1>
+    </div>
+    {% include 'partials/message.html' %}
+    {% include 'partials/form.html' %}
+{% endblock content %}
