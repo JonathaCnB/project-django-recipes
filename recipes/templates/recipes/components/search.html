@@ -1,0 +1,24 @@
+<div class="search-container">
+    <div class="container">
+        <form 
+            class="search-form" 
+            action="{% url 'recipes:search' %}" 
+            method="GET"
+        >
+            <input
+                type="search"
+                class="search-input"
+                name="q"
+                value="{{search_term}}"
+                placeholder="Clique aqui para pesquisar uma receita"
+                required
+            />
+            <button
+                type="submit"
+                class="search-button"
+            />
+                <i class="fas fa-search"></i>
+            </button>
+        </form>
+    </div>
+</div>
