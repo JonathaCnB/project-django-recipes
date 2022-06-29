@@ -1,6 +1,7 @@
 from django.urls import path
 
 from users import views
+from users.views.dashboard_recipe import DashboardRecipe, DashboardRecipeDelete
 
 app_name = "users"
 
@@ -13,17 +14,17 @@ urlpatterns = [
     path("dashboard/", views.dashboard, name="dashboard"),
     path(
         "dashboard/recipe/create/",
-        views.dashboard_recipe_create,
+        DashboardRecipe.as_view(),
         name="recipe_create",
     ),
     path(
         "dashboard/recipe/delete/",
-        views.dashboard_recipe_delete,
+        DashboardRecipeDelete.as_view(),
         name="recipe_delete",
     ),
     path(
         "dashboard/recipe/<int:recipe_id>/edit/",
-        views.dashboard_recipe_edit,
+        DashboardRecipe.as_view(),
         name="recipe_id",
     ),
 ]

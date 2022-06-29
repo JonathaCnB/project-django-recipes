@@ -1,4 +1,6 @@
 from django.db import models
+from django.urls import reverse
+from django.utils.text import slugify
 from users.models import User
 
 
@@ -14,6 +16,9 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse("recipes:category", args=(self.id,))
 
 
 class Recipe(models.Model):
@@ -55,3 +60,13 @@ class Recipe(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse("recipes:detail", args=(self.id,))
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            slug = slugify(self.title)
+            self.slug = slug
+
+        return super().save(*args, **kwargs)

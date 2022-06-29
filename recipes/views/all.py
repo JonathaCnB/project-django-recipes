@@ -5,9 +5,8 @@ from django.db.models import Q
 from django.http import Http404, HttpResponse  # noqa
 from django.shortcuts import get_object_or_404, render
 from faker import Faker  # noqa
-from utils.pagination import make_pagination
-
 from recipes.models import Category, Recipe, User  # noqa
+from utils.pagination import make_pagination
 
 PER_PAGES = settings.PER_PAGES
 

@@ -7,7 +7,6 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from recipes.forms import recipes
 from recipes.models import Recipe
-
 from users.forms import LoginForm, RegisterForm
 
 
