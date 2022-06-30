@@ -1,9 +1,13 @@
 """
     from django.contrib.contenttypes.fields import GenericRelation
 """
+import os
+
+from django.conf import settings
 from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
+from PIL import Image
 from tags.models import Tag
 from users.models import User
 
@@ -88,4 +92,34 @@ class Recipe(models.Model):
             slug = slugify(self.title)
             self.slug = slug
 
-        return super().save(*args, **kwargs)
+        saved = super().save(*args, **kwargs)
+
+        if self.cover:
+            try:
+                print("passando o cover")
+                self.resize_image(self.cover, 1280)
+            except FileNotFoundError:
+                ...
+
+        return saved
+
+    @staticmethod
+    def resize_image(img, new_width=800):
+        image_full_path = os.path.join(settings.MEDIA_ROOT, img.name)
+        image_pillow = Image.open(image_full_path)
+        original_width, original_height = image_pillow.size
+
+        if original_width <= new_width:
+            print("NO_image>>>>>")
+            image_pillow.close()
+            return
+
+        new_height = round((new_width * original_height) / original_width)
+
+        new_image = image_pillow.resize((new_width, new_height), Image.LANCZOS)
+        print("new_image>>>>>")
+        new_image.save(
+            image_full_path,
+            optimize=True,
+            quality=50,
+        )
