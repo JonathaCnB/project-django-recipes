@@ -2,6 +2,7 @@ from django.urls import path
 
 from users import views
 from users.views.dashboard_recipe import DashboardRecipe, DashboardRecipeDelete
+from users.views.profile import ProfileView
 
 app_name = "users"
 
@@ -10,6 +11,7 @@ urlpatterns = [
     path("register/create/", views.register_create, name="register_create"),
     path("login/", views.login_user, name="login"),
     path("login/create/", views.login_create, name="login_create"),
+    path("profile/<int:pk>/", ProfileView.as_view(), name="profile"),
     path("logout/", views.logout_user, name="logout"),
     path("dashboard/", views.dashboard, name="dashboard"),
     path(

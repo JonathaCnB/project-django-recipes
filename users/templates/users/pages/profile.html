@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}Cadastro{% endblock title %}
+{% block search_or_no %}{% endblock search_or_no %}
+
+{% block content %}
+    <div class="main-content center container">
+        <h2>{{profile.author.get_full_name}}</h2>
+        {{profile.bio}}
+    </div>
+{% endblock content %}

@@ -1,9 +1,8 @@
-
 LANGUAGE_CODE = "pt-BR"
 
 TIME_ZONE = "America/Manaus"
 
-USE_I18N = True
+USE_I18N = False  # se não for traduzir, melhor desativar
 
 USE_TZ = True
 
