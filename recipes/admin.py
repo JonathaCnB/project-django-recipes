@@ -1,6 +1,20 @@
+"""
+    from django.contrib.contenttypes.admin import GenericStackedInline
+"""
 from django.contrib import admin
+from tags.models import Tag
 
 from recipes.models import Category, Recipe
+
+# admin.TabularInline \
+# admin.StackedInline
+# GenericStackedInline para contenttypes
+
+
+class TagInline(admin.StackedInline):
+    model = Tag
+    fields = ("name",)
+    extra = 1
 
 
 @admin.register(Category)
@@ -21,6 +35,10 @@ class RecipeAdmin(admin.ModelAdmin):
     list_per_page = 10
     ordering = ("-id", "author")
     prepopulated_fields = {"slug": ("title",)}
+    autocomplete_fields = ("tags",)
+    # inlines = [
+    #     TagInline,
+    # ]
 
 
 # admin.site.register(Category)

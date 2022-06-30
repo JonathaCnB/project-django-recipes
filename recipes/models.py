@@ -1,6 +1,10 @@
+"""
+    from django.contrib.contenttypes.fields import GenericRelation
+"""
 from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
+from tags.models import Tag
 from users.models import User
 
 
@@ -19,6 +23,14 @@ class Category(models.Model):
 
     def get_absolute_url(self):
         return reverse("recipes:category", args=(self.id,))
+
+
+class RecipeManager(models.Manager):
+    def get_published(self):
+        return self.filter(is_published=True)
+
+    def get_non_published(self):
+        return self.filter(is_published=False)
 
 
 class Recipe(models.Model):
@@ -52,6 +64,13 @@ class Recipe(models.Model):
         on_delete=models.SET_NULL,
         null=True,
     )
+    """
+        Como fazer relações desacopladas
+        tags = GenericRelation(to=Tag, related_query_name="recipes")
+    """
+    tags = models.ManyToManyField(Tag)
+
+    objects = RecipeManager()
 
     class Meta:
         db_table = "recipes.recipe"
