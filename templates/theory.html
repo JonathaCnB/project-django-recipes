@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block search_or_no %}{% endblock search_or_no %}
+{% block content %}
+    <h1>Teoria</h1>
+    {% for recipe in recipes %}
+        <li>
+            {{ recipe.id }} {{ recipe.title }} | {{ recipe.author_full_name }}
+        </li>
+    {% empty %}
+        <p>Sem receitas</p>
+    {% endfor %}
+    <h3>{{number.id__count}} - Receitas</h3>
+    <h3>{{number.number}} - Receitas</h3>
+        <hr>
+    {% for recipe in non_published %}
+        <li>
+            {{ recipe.id }} {{ recipe.title }} | {{ recipe.author_full_name }}
+        </li>
+    {% empty %}
+        <p>Sem receitas</p>
+    {% endfor %}
+{% endblock content %}
