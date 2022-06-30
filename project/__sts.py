@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     # local apps
     "recipes",
     "users.apps.UsersConfig",
+    "tags",
 ]
 
 MIDDLEWARE = [
@@ -83,7 +84,6 @@ AUTH_PASSWORD_VALIDATORS = [
 
 AUTH_USER_MODEL = "users.User"
 
-SITE_ID = 1
 
 LANGUAGE_CODE = "pt-BR"
 
@@ -126,3 +126,5 @@ MESSAGE_TAGS = {
 SELENIUM_HEADLESS = config("SELENIUM_HEADLESS", default=False, cast=bool)
 
 PER_PAGES = config("PER_PAGES", default=6, cast=int)
+
+SITE_ID = 1
